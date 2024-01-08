@@ -109,8 +109,5 @@ router.get('/deleteblog', (req, res) => {
   res.render('deleteblog');
 });
 
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard');
-});
 
 module.exports = router;
