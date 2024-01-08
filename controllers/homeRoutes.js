@@ -108,5 +108,50 @@ router.post('/login', async (req, res) => {
   }
 );
 
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+router.post('/signup', async (req, res) => {
+  try {
+      const userData = await User.create(req.body);
+      req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
+      });
+  } catch (err) {
+      res.status(400).json(err);
+  }
+  }
+);
+
+router.get('/newblog', (req, res) => {
+  res.render('newblog');
+});
+
+
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) {
+      req.session.destroy(() => {
+      res.status(204).end();
+      });
+  } else {
+      res.status(404).end();
+  }
+  }
+);
+
+router.get('/editblog', (req, res) => {
+  res.render('editblog');
+});
+
+router.get('/deleteblog', (req, res) => {
+  res.render('deleteblog');
+});
+
+router.get('/dashboard', (req, res) => {
+  res.render('dashboard');
+});
 
 module.exports = router;
