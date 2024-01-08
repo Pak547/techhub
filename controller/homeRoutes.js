@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const  User  = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -9,7 +9,7 @@ router.get('/', withAuth, async (req, res) => {
       order: [['name', 'ASC']],
     });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    const users = userData.map((blogPosts) => blogPosts.get({ plain: true }));
 
     res.render('homepage', {
       users,
@@ -32,8 +32,5 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('signup');
 });
-
-module.exports = router;
-
 
 module.exports = router;
