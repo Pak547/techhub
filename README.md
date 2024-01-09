@@ -9,9 +9,6 @@ This project is a Content Management System (CMS)-style blog site designed for d
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contributing](#contributing)
-- [Tests](#tests)
-- [Questions](#questions)
 
 ## Feature
 
